@@ -1,0 +1,182 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    overflow-x:hidden;
+    min-width: 320px;
+}
+
+/* header */
+
+header{
+    width: 60%;
+    height: 3rem;
+    position: fixed;
+    top: 2%;
+}
+header form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+header input[type="text"]{
+    width: 80%;
+    padding-left: 10%;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+header input[type="submit"]{
+    width: 20%;
+}
+
+.Choose{
+    position: fixed;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgb(9, 18, 73);
+    width: 4rem;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+
+.Choose li{
+    padding: 0.9rem;
+    border-radius: 5px;
+    border: transparent;
+}
+.iChoose{
+    background-color: gray;
+}
+.listes{
+    background-color: rgb(9, 18, 73);
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 2rem;
+    padding: 1.5rem;
+    height: 80vh;
+    overflow: scroll;
+    margin-top: 5%;
+}
+.listes article{
+    background-color: rgba(174, 190, 174, 0.696);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 5px;
+    border: transparent;
+    padding: 1rem;
+}
+
+article form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.listes figure{
+    width: 100px;
+}
+figure img{
+    width: 100%;
+}
+
+@media (max-width:1082px ){
+    .listes{
+        grid-template-columns: repeat(1,1fr);
+        height: 65vh;
+    }
+    header{
+        margin-top: auto;
+    }
+
+}
+
+@media (max-width:635px ){
+    header{
+        width: 90%;
+    }
+    header input[type="text"]{
+        width: 70%;
+    }
+    header input[type="submit"]{
+        width: 30%;
+    }
+
+    .listes{
+        height: 100%;
+        width: 90%;
+        margin-top: 10%;
+    }
+    article{
+        flex-direction: column;
+    }
+    .Choose{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 2%;
+        top: auto;
+        border-radius: 10px;
+        background-color: transparent;
+        align-items: center;
+    }
+    .Choose nav{
+        width: 80%;
+    }
+    .Choose ul{
+        flex-direction: row;
+        width: 100%;
+        background-color: rgb(9, 18, 73);
+        align-items: center;
+        justify-content: center;
+        height: 2rem;
+        border-radius: 10px;
+        border: 2px solid white;
+    }
+
+}
+a::before{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 5px;
+    left: 0;
+    bottom: -10px;
+    background-color: white;
+    transition: 0.5s ease-in-out;
+}
+a:hover{
+    color: white;
+}
+a:hover::before{
+    width: 100%;
+}
+li{
+    position: relative;
+}

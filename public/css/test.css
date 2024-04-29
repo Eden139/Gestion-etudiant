@@ -1,0 +1,61 @@
+@font-face {
+  font-family: sora;
+  src: url("../font/Sora-Regular.ttf");
+}
+:root {
+  font-size: 16px;
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #23232e;
+  --bg-secondary: #141418;
+  font-family: sora, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: black;
+  background-color: var(--bg-primary);
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin: auto;
+  padding: 1rem;
+}
+h1 {
+  color: #feca40;
+}
+
+table {
+  border: 1px solid #444;
+  border-collapse: collapse;
+}
+th {
+  padding: 7px 10px;
+  text-align: left;
+  font-weight: bolder;
+  font-size: 1.4rem;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 0.8rem 0.3rem;
+}
+thead {
+  background-color: #feca40;
+}
+tr {
+  border: 1px solid #fedf8c;
+}
+td {
+  padding: 7px 10px;
+  text-align: left;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #fedf8c;
+  font-size: 1.1rem;
+  padding: 0.8rem 0.3rem;
+}

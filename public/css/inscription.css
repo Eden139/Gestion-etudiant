@@ -1,0 +1,149 @@
+@font-face {
+    font-family: sora;
+    src: url(font/Sora-Regular.ttf);
+}
+:root {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: sora;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    padding: 5vh 2vw;
+    border-radius: 2%;
+    box-shadow: 2px 2px 2px #000a;
+    border: 1px solid #000a;
+    height: fit-content;
+    min-height: 32rem;
+    padding-bottom: 7vh;
+    width: 25rem;
+}
+
+/* Image */
+.image {
+    margin-bottom: 4vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image .profile-image img{
+    padding: 0;
+    margin: 0;
+    height: 7rem;
+    width: 10rem;
+}
+
+/*  Information */
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 0;
+    position: relative;
+    height: 100%;
+}
+
+.information .input-group {
+    margin: .7rem 2.5rem;
+    width: 65%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #222;
+    z-index: 0;
+    overflow:  visible;
+    display: flex;
+    justify-content: space-between;
+}
+
+.information .select-container,
+.information .etat {
+    display: flex;
+    flex-direction: row;
+}
+
+.information .input-group select {
+    font-size: 1.2rem;
+    width: 55%;
+    background-color: transparent;
+    border: none;
+    font-family: sora;
+}
+
+.information .input-group span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.information .input-group input {
+    padding: .5rem;
+    font-weight: 300;
+    font-size: 1rem;
+    font-family: sora;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-right: 2.2rem;
+}
+
+.information .input-group textarea {
+    padding: .5rem;
+    font-weight: 300;
+    font-size: 1rem;
+    height: 1.2rem;
+    width: 100%;
+    resize: none;
+}
+
+.information .input-group label {
+    position: absolute;
+    left: .3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: .15s;
+    font-size: 1.1rem;
+}
+
+.input-group input:focus~label,
+.input-group input:valid~label,
+.input-group textarea:focus~label,
+.input-group textarea:valid~label{
+    top: -6px;
+}
+
+.submit-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.submit-div .input-submit{
+    background-color: #222e;
+    color: white;
+    border: 1px solid #0002;
+    padding: .5rem 2rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.submit-div .input-submit:hover {
+    cursor: pointer;
+    background-color: #000;
+    box-shadow: 0px 0px 5px #000;
+}

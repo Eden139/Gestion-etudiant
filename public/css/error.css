@@ -1,0 +1,43 @@
+ 
+.error-input {
+    background-color: #fafdfeee;
+    width: fit-content;
+    padding: 1rem 1rem;
+    border-radius: .5rem;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    transform: translate(40%, 10%) scale(0.1);
+    border: 1px solid #141418;
+    display: none;
+    font-size: .9rem;
+}
+.error-input h4 {
+    margin: 0;
+}
+.error-input ul {
+    margin: .5rem 0;
+    list-style-type: square;
+    padding: 0 0 0 2rem;
+}
+.input-group i {
+    cursor: pointer;
+}
+.input-group i:hover+.error-input,
+.error-input:hover {
+    display: block;
+    transform: translate(10%, 1%) scale(1);
+} 
+
+.student-information .input-error {
+    border-bottom-color: red;
+}
+.student-information .input-error i {
+    color: red;
+}
+.student-information .input-valid {
+    border-bottom-color: #34b233;
+}
+.student-information .input-valid i {
+    color: #34b233;
+}

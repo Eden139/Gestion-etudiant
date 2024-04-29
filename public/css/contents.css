@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --sh1: 3em;
+    --sfont: 1.5em;
+}
+
+body{
+    color:white;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 94vw;
+    height: 85vh;
+    margin: 10vh 3vw;
+}
+
+.other-fonct{
+    width: 85%;
+    background-image: url("images/back.png") ;
+    margin: 5vw 7.5%;
+    border-radius: 20px;
+    height: min-content;
+    background-size: cover;
+}
+
+.titre{
+    padding-top: 5vh;
+    color:white;
+    font-size: 2vw;
+}
+
+.principale{
+    display: flex;
+    margin: auto;
+    padding: auto;
+    border-radius: 10px;
+}
+
+.principale *{
+    display:block;
+    border:none;
+}
+
+.clip{
+    height: 3.5%;
+    width: 18vw;
+    border-top-left-radius: 1vw;
+    background-color: white;
+    clip-path: polygon(25% 0%, 33% 100%, 0% 100%, 0% 0%) ;
+    margin: auto;
+}
+
+.ajout{
+    width: 18vw;
+    height: 20vw;
+    background-color: white;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.ajout a{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    z-index: 50;
+}
+
+.Add{
+    padding: 2vw;
+    padding-left: 2.5vw;
+    text-decoration: none;
+    width: 100%;
+}
+
+.A{
+    padding: 3vh;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.img{
+    margin: auto;
+    width: 45%;
+    padding: 2vw;
+}
+
+h2,h3{
+    font-size: 3vw;
+    font-family: sans-serif;
+    color: #000000;
+}
+
+.other-fonct .text{  
+    text-align: center;
+    position: relative;
+    margin: auto;
+    padding: 0.5vw;
+    font-size: 1.2vw;
+    text-overflow: clip;
+    z-index: 5;
+    color: #000000;
+}
+
+.frame{
+   position: absolute;
+   top: 50%;
+   z-index: 1;
+}
+
+@media screen and (max-width: 700px) {
+    :root{
+        --sh1: 2.3em;
+        --sfont: 1em;
+    } 
+    .principale{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: auto;
+        padding: auto;
+        border-radius: 10px;
+    }
+    .Add{
+        padding: 1.5vw;
+        padding-left: 2.5vw;
+        text-decoration: none;
+        width: 100%;
+    }
+    .A{
+        text-align: center;
+        padding: 1vh;
+        width: 90%;
+        height: 100%;
+        position: relative;
+    }
+    .clip{
+        height: 0.5vh;
+        width: 30vw;
+        border-top-left-radius: 1vw;
+        background-color: white;
+        clip-path: polygon(25% 0%, 33% 100%, 0% 100%, 0% 0%);
+        margin: auto;
+    }
+    .ajout{
+        width: 30vw;
+        height: 34vw;
+    }
+    .other-fonct{
+        margin:0 0 8vh 8%;
+    }
+    .other-fonct .principale .text{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root{
+        --sh1: 2em;
+        --sfont: 0.8em;
+    }
+    .other-fonct .principale .text{
+        font-size: 10px;
+    }
+}
