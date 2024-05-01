@@ -12,12 +12,132 @@ class GestionEtudiant extends BaseController
 {
   protected $helpers = ['form'];
   public function listsomeone()
+    {
+        $model = new EtudiantModel();
+        $etudiants = $model->findAll();
+        foreach($etudiants as $e){
+            $id_etd[] = $e['id_etudiant'];
+            $name[] = $e['nom'];
+            $fname[] = $e['prenoms'];
+            $birthday[] = $e['date_naissance'];
+            $birthlocation[] = $e['lieu_naissance'];
+            $address[] = $e['adresse'];
+            $cin[] = $e['cin'];
+            $tel[] = $e['telephone'];
+            $mail[] = $e['email'];
+            $num_bac[] = $e['num_bacc'];
+            $year_bac[] = $e['annee_bacc'];
+            $nation[] = $e['nationalite'];
+        }
+        
+        foreach($etudiants as $e){
+            $data[] = [
+                'id_etudiant' => $e['id_etudiant'],
+                'nom' => $e['nom'],
+                'prenoms' => $e['prenoms'],
+                'date_naissance' => $e['date_naissance'],
+                'lieu_naissance' => $e['lieu_naissance'],
+                'adresse' => $e['adresse'],
+                'cin' => $e['cin'],
+                'telephone' => $e['telephone'],
+                'email' => $e['email'],
+                'num_bacc' => $e['num_bacc'],
+                'annee_bacc' => $e['annee_bacc'],
+                'nationalite' => $e['nationalite'],
+                'statut' => $this->exist($e['id_etudiant']),
+                'grade' => $this->rec_grade($e['id_etudiant'])
+            ];
+        }
+        return view('list', ['etudiants' => $data]);
+    }
+    public function exist($id){
+        $model = new InscriptionModel();
+        $inscrit = $model->where('id_etudiant', $id)->findAll();
+        if(!empty($inscrit)){
+            $exist = "Inscrit";
+        } else {
+            $exist = "N'est pas inscrit";
+        }
+        return $exist;
+    }
+    public function rec_grade($id){
+        $model = new InscriptionModel();
+        $inscrit = $model->where('id_etudiant', $id)->findAll();
+        if(!empty($inscrit)){
+            foreach($inscrit as $i){
+                $grade = $i['grade'];
+                $grade .= $i['niveau'];
+            }
+            
+        } else {
+            $grade = "inconnue";
+        }
+        return $grade;
+    }
+
+    public function someoneregister()
+    {
+        $grade = $this->request->getvar('grade');
+        $niveau = $this->request->getvar('niveau');
+        if(empty($grade) and empty($niveau)){
+            $grade ="L";
+            $niveau ="1";
+        }
+
+        $model = new InscriptionModel();
+        $model1 = new EtudiantModel();
+        
+        if($grade === "all" and $niveau="all"){
+            return $this->listsomeone();
+        }
+        $inscrit = $model->where('grade', $grade)->where('niveau', $niveau)->findAll();
+        if(empty($inscrit)){
+       
+            return view('list', ['etudiants' => "vide"]);
+            // return $this->listsomeone();
+        }
+        foreach ($inscrit as $in) {
+            $etudiants[] = $model1->where('id_etudiant', $in['id_etudiant'])->findAll()[0];    
+        }
+        foreach($etudiants as $e){
+            $data[] = [
+                'id_etudiant' => $e['id_etudiant'],
+                'nom' => $e['nom'],
+                'prenoms' => $e['prenoms'],
+                'date_naissance' => $e['date_naissance'],
+                'lieu_naissance' => $e['lieu_naissance'],
+                'adresse' => $e['adresse'],
+                'cin' => $e['cin'],
+                'telephone' => $e['telephone'],
+                'email' => $e['email'],
+                'num_bacc' => $e['num_bacc'],
+                'annee_bacc' => $e['annee_bacc'],
+                'nationalite' => $e['nationalite'],
+                'statut' => $this->exist($e['id_etudiant']),
+                'grade' => $this->rec_grade($e['id_etudiant'])
+            ];
+        }
+        return view('list', ['etudiants' => $data]);
+    }  
+/* public function listsomeone()
   {
     $model = new EtudiantModel();
     $etudiants = $model->findAll();
     return view('list', ['etudiants' => $etudiants]);
   }
-
+  public function form_modify()
+  {
+    $id = $this->request->getvar('id');
+    echo "id = $id";
+    $model  = new EtudiantModel();
+    $model1 = new InscriptionModel();
+    $etudiants   = $model->where('id_etudiant', $id)->find();
+    $inscription = $model1->where('id_etudiant', $id)->find();
+    print_r($etudiants);
+    echo "<br>TTTTTTT<br>";
+    print_r($inscription);
+    return view('form_modify', ['etudiants' => $etudiants, 'id' => $id, 'inscription' => $inscription]);
+  }
 
   public function someoneregister()
   {
@@ -44,7 +164,7 @@ class GestionEtudiant extends BaseController
       $etudiants[] = $model1->where('id_etudiant', $in['id_etudiant'])->findAll()[0];
     }
     return view('list', ['etudiants' => $etudiants]);
-  }
+  }*/
   public function form_inscription()
   {
     return view('form_inscription');
@@ -151,7 +271,7 @@ class GestionEtudiant extends BaseController
     if ($model) {
       $data = ['etudiant' => $model->findAll()];
     }
-    return "";
+    return $this->listsomeone();
   }
 
   //Fonction permet de faire une inscription
@@ -193,6 +313,24 @@ class GestionEtudiant extends BaseController
     if (empty($etudiants)) {
       return $this->someoneregister();
     }
-    return view('list', ['etudiants' => $etudiants]);
+ foreach($etudiants as $e){
+            $data[] = [
+                'id_etudiant' => $e['id_etudiant'],
+                'nom' => $e['nom'],
+                'prenoms' => $e['prenoms'],
+                'date_naissance' => $e['date_naissance'],
+                'lieu_naissance' => $e['lieu_naissance'],
+                'adresse' => $e['adresse'],
+                'cin' => $e['cin'],
+                'telephone' => $e['telephone'],
+                'email' => $e['email'],
+                'num_bacc' => $e['num_bacc'],
+                'annee_bacc' => $e['annee_bacc'],
+                'nationalite' => $e['nationalite'],
+                'statut' => $this->exist($e['id_etudiant']),
+                'grade' => $this->rec_grade($e['id_etudiant'])
+            ];
+        }
+        return view('list', ['etudiants' => $data]);
   }
 }
